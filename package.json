@@ -1,0 +1,20 @@
+{
+  "name": "move-jess-backend",
+  "version": "1.0.0",
+  "description": "Backend for Move_Jess",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "exa-js": "^1.5.12"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
