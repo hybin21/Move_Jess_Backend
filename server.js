@@ -1,19 +1,17 @@
 import express from "express";
 import 'dotenv/config';
 import cors from "cors";
-import Exa from "exa-js";
-import { getSummary } from "./exaService.js";  // ✅ Corrected Import Path
+import { getSummary } from "./exaService.js"; // ✅ Import the function
 
 const app = express();
-const PORT = 5001;
+const PORT = 5002;
 
-// ✅ Ensure API Key is being read correctly
 console.log("Backend EXA API Key:", process.env.EXA_API_KEY);
 
-const exa = new Exa(process.env.EXA_API_KEY);
-
-// ✅ Enable CORS for frontend (localhost:5173)
-app.use(cors({ origin: "http://hybin21.github.io" }));
+app.use(cors({
+    origin: ["http://localhost:5173", "https://hybin21.github.io"],
+    credentials: true,
+}));
 app.use(express.json());
 
 app.post("/api/movie-summary", async (req, res) => {
@@ -24,7 +22,7 @@ app.post("/api/movie-summary", async (req, res) => {
     }
 
     try {
-        const summary = await getSummary(movieTitle);  // ✅ Call function from exaService.js
+        const summary = await getSummary(movieTitle);  // ✅ Use function from exaService.js
         res.json({ summary });
     } catch (error) {
         console.error("Error fetching movie summary:", error);
