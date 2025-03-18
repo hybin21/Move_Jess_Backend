@@ -13,7 +13,7 @@ console.log("Backend EXA API Key:", process.env.EXA_API_KEY);
 const exa = new Exa(process.env.EXA_API_KEY);
 
 // ✅ Enable CORS for frontend (localhost:5173)
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: "http://hybin21.github.io" }));
 app.use(express.json());
 
 app.post("/api/movie-summary", async (req, res) => {
@@ -32,6 +32,6 @@ app.post("/api/movie-summary", async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server running on port ${PORT}`);
 });
